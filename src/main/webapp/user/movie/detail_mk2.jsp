@@ -1,8 +1,20 @@
+<%@page import="movie.detail.DetailService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../../fragments/siteProperty.jsp"%>
+
+<%
+request.setCharacterEncoding("euc-kr");
+%>
+
+<%
+DetailService ds = DetailService.getInstance();
+pageContext.setAttribute("detail", ds.setDataToJSON());
+
+
+%>
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
@@ -53,13 +65,15 @@
 		</header>
 	<!-- 히어로 섹션 -->
 	<div class="hero-section">
-		<div class="bg-img" style="background-image: url(${commonURL}/resources/images/movie_bg.jpg)"></div>
+		<div class="bg-img" style="background-image: url(${commonURL}$resources/images/movie_bg.jpg)"></div>
 
 		<div class="bg-mask"></div>
 		<div class="hero-container">
 			<!-- 왼쪽 정보 -->
 			<div class="hero-info">
 				<h1 class="title">극장판 체인소 맨: 레제편</h1>
+			
+				
 
 				<!-- 통계 -->
 				<div class="hero-stats">
@@ -92,7 +106,7 @@
 				<div class="poster">
 					<div class="poster-content">
 						<img class="poster-img" alt="체인소맨 레제편"
-							src="${commonURL}/resources/images/movie_poster.jpg" />
+							src="${movieInfo.getPosterImg() }" />
 					</div>
 				</div>
 				<div class="purchase-box">
@@ -329,7 +343,13 @@
 									alt="예고편 3" />
 								<div class="play-icon">▶</div>
 							</div>
-
+							<div class="video-thumbnail"
+								onclick="changeVideo('https://www.youtube.com/embed/_UuQ4o2jF1Y', this)">
+								<img src="https://img.youtube.com/vi/_UuQ4o2jF1Y/mqdefault.jpg"
+									style="width: 100%; height: 100%; object-fit: cover"
+									alt="예고편 3" />
+								<div class="play-icon">▶</div>
+							</div>
 						</div>
 
 						<!--
