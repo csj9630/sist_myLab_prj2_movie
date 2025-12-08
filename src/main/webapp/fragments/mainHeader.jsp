@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-	
 <h1 class="ci" >
-	<a href="https://www.megabox.co.kr/" title="MEGABOX 메인으로 가기" style="height:55px; background-image: url('http://localhost/sist_prj2_movieWeb/resources/images/header.png');"></a>
+	<a href="http://localhost/second_project_movie_reservation/index/index.jsp" title="MEGABOX 메인으로 가기" style="height:55px; background-image: url('http://localhost/second_project_movie_reservation/images/mainHeader.png');"></a>
 </h1>
 <!-- 2019-04-15 마크업 수정 : 고객요청  -->
 <div class="util-area">
@@ -12,8 +10,8 @@
 		<!-- 로그인전 -->
 		<div class="before" style="">
 			<a
-				href="javaScript:fn_viewLoginPopup(&#39;default&#39;,&#39;pc&#39;)"
-				title="로그인">로그인</a> <a href="https://www.megabox.co.kr/join"
+				href="http://localhost/second_project_movie_reservation/index/member_login.jsp"
+				title="로그인">로그인</a> <a href="http://localhost/second_project_movie_reservation/index/member_joinFrm.jsp"
 				title="회원가입">회원가입</a>
 		</div>
 
@@ -22,6 +20,58 @@
 			<a href="https://www.megabox.co.kr/on/oh/ohg/MbLogin/mbLogout.do"
 				class="" title="로그아웃">로그아웃</a> <a
 				href="https://www.megabox.co.kr/movie" class="notice" title="알림">알림</a>
+
+			<!-- layer-header-notice -->
+			<div class="layer-header-notice">
+				<div class="notice-wrap">
+					<p class="tit-notice">알림함</p>
+
+					<div class="count">
+						<p class="left">
+							전체 <em class="totalCnt">0</em> 건
+						</p>
+
+						<p class="right">* 최근 30일 내역만 노출됩니다.</p>
+					</div>
+
+					<!-- scroll -->
+					<div
+						class="scroll m-scroll mCustomScrollbar _mCS_1 mCS_no_scrollbar">
+						<div id="mCSB_1"
+							class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+							style="max-height: 0px;" tabindex="0">
+							<div id="mCSB_1_container"
+								class="mCSB_container mCS_no_scrollbar_y"
+								style="position: relative; top: 0; left: 0;" dir="ltr">
+								<ul class="list">
+									<li class="no-list">알림 내역이 없습니다.</li>
+								</ul>
+							</div>
+							<div id="mCSB_1_scrollbar_vertical"
+								class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical">
+								<div class="mCSB_draggerContainer">
+									<div id="mCSB_1_dragger_vertical" class="mCSB_dragger"
+										style="position: absolute; min-height: 30px; display: none; top: 0px;">
+										<div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+									</div>
+									<div class="mCSB_draggerRail"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="notice-list-more">
+						<button type="button" class="button btn-more-notice-list">
+							더보기 <i class="iconset ico-btn-more-arr"></i>
+						</button>
+					</div>
+					<!--// scroll -->
+					<button type="button" class="btn-close-header-notice">알림
+						닫기</button>
+				</div>
+				<!--// notice-wrap -->
+				<!--// layer-header-notice -->
+			</div>
+
 		</div>
 
 		<a href="https://www.megabox.co.kr/booking">빠른예매</a>
@@ -204,7 +254,5 @@
 		</div>
 	</div>
 	<!--// wrap -->
-	
 </div>
-
 <!--// 레이어 : 사이트맵 -->
