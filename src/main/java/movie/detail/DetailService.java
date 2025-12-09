@@ -11,9 +11,6 @@ public class DetailService {
 	private static DetailService ds;
 	
 	private DetailService() {
-
-//		dtDTO.setTitle("엣지 오브 투모로우");
-//		dtDTO.setPosterImg("https://mblogthumb-phinf.pstatic.net/MjAyMDEwMzFfMjE1/MDAxNjA0MDc4OTM1Nzg1.40QNdcXneyABYJ0lP39MkyQ_3I995cVJf0o6gE8-UGkg.VymdHAW7GDmFXJPMKMiWbbdE23JzEavbhzG6GyLSNtEg.JPEG.rashowmon/%EC%97%A3%EC%A7%80%EC%98%A4%EB%B8%8C%ED%88%AC%EB%AA%A8%EB%A1%9C%EC%9A%B0_%ED%8F%AC%EC%8A%A4%ED%84%B02.jpg?type=w800");
 	}//DetailService
 	
 	public static DetailService getInstance() {
@@ -94,14 +91,17 @@ public class DetailService {
 	    dtDTO.setBgImg("resources/images/edge_bg.jpg");
 
 	    // 줄거리에 <br /> 태그를 포함하여 포맷팅
-	    dtDTO.setContentInfo("가까운 미래, 강력한 외계 종족 '미믹'의 침략으로 인류는 멸망 위기를 맞는다.<br/> <br/> "
-	            + "빌 케이지(톰 크루즈)는 자살 작전이나 다름없는 전투에 투입되어 죽음을 맞이하지만,<br/> "
-	            + "눈을 떠보니 작전 수행 전날로 다시 깨어나게 된다.<br/> <br/> "
-	            + "반복되는 시간의 굴레(타임 루프)에 갇힌 그는<br/> "
-	            + "전쟁 영웅 리타 브라타스키(에밀리 블런트)를 만나 훈련을 거듭하며,<br/> "
-	            + "점점 더 강력한 전사로 거듭나게 되는데...<br/> <br/> "
-	            + "죽어야만 더 강해진다! 인류의 미래를 건 최후의 반격이 시작된다!<br/>");
-
+	    dtDTO.setContentInfo("가까운 미래, 강력한 외계 종족 '미믹'의 침략으로 인류는 멸망 위기를 맞는다. 빌 케이지(톰 크루즈)는 자살 작전이나 다름없는 전투에 투입되어 죽음을 맞이하지만,  눈을 떠보니 작전 수행 전날로 다시 깨어나게 된다.  반복되는 시간의 굴레(타임 루프)에 갇힌 그는 전쟁 영웅 리타 브라타스키(에밀리 블런트)를 만나 훈련을 거듭하며, 점점 더 강력한 전사로 거듭나게 되는데...  죽어야만 더 강해진다! 인류의 미래를 건 최후의 반격이 시작된다!");
+		/*
+		 * dtDTO.
+		 * setContentInfo("가까운 미래, 강력한 외계 종족 '미믹'의 침략으로 인류는 멸망 위기를 맞는다.<br/> <br/> " +
+		 * "빌 케이지(톰 크루즈)는 자살 작전이나 다름없는 전투에 투입되어 죽음을 맞이하지만,<br/> " +
+		 * "눈을 떠보니 작전 수행 전날로 다시 깨어나게 된다.<br/> <br/> " +
+		 * "반복되는 시간의 굴레(타임 루프)에 갇힌 그는<br/> " +
+		 * "전쟁 영웅 리타 브라타스키(에밀리 블런트)를 만나 훈련을 거듭하며,<br/> " +
+		 * "점점 더 강력한 전사로 거듭나게 되는데...<br/> <br/> " +
+		 * "죽어야만 더 강해진다! 인류의 미래를 건 최후의 반격이 시작된다!<br/>");
+		 */
 	    dtDTO.setMediaLating("12세 이용가");
 	    dtDTO.setGenre("액션, SF, 블록버스터");
 	    dtDTO.setRunTime(113);
@@ -116,10 +116,11 @@ public class DetailService {
 	    // 스틸컷 링크 추가 (예시 URL)
 	    List<String> cutImg = new ArrayList<>();
 	    cutImg.add("https://image.cine21.com/resize/cine21/still/2014/0109/41062_52ce5a54c30cb_movie_image%20(1)[H500].jpg");
-	    cutImg.add("https://play-lh.googleusercontent.com/nxZTz3WQpGyEs4M_HAcrNCmfC8TG-KX_EGwy1xZDNxv_Ne-8fpxvBqtORF7VGJSpUTE");
+	    cutImg.add("https://file2.nocutnews.co.kr/newsroom/image/2014/06/09/20140609100444557691.jpg");
 	    cutImg.add("https://mblogthumb-phinf.pstatic.net/MjAyMjEwMDVfMjEx/MDAxNjY0OTM4ODQxNTY2.g9by5uyy3vRyrqRFjqsiP-WjEEARB4HOJYZibkI6RVgg.BCYADf3kXO3ved8bVg3srthTLI0ZBaCFNgdT5ALprVsg.JPEG.swallower04/edge_of_tomorrow_aphlamimic_texture_study_v001_003_sr_copy.jpg?type=w800");
-	    cutImg.add("https://img.seoul.co.kr/img/upload/2014/05/30/SSI_20140530174634_O2.jpg");
+	    cutImg.add("https://i.ytimg.com/vi/PQzrUNQLQGg/maxresdefault.jpg");
 	    cutImg.add("https://i.ytimg.com/vi/Dnqqm1MRwsA/maxresdefault.jpg");
+	    cutImg.add("https://t1.daumcdn.net/cfile/blog/236C9D355395877210");
 	    dtDTO.setCutImg(cutImg);
 
 	    return dtDTO;

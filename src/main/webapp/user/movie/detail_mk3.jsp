@@ -24,8 +24,8 @@ pageContext.setAttribute("thumImg2", "/mqdefault.jpg");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${detail.title}</title>
-<link rel="stylesheet" href="${commonURL}/resources/css/movie_detail.css" />
 <link rel="stylesheet" href="${commonURL}/resources/css/megabox.min.css" />
+<link rel="stylesheet" href="${commonURL}/resources/css/movie_detail.css" />
 <script src="${commonURL}/resources/js/movie_detail.js"></script>
 <link rel="shortcut icon" href="${commonURL}/resources/images/favicon.ico">
 
@@ -37,9 +37,7 @@ pageContext.setAttribute("thumImg2", "/mqdefault.jpg");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	$(function() {
 
-	});
 </script>
 </head>
 <body>
@@ -55,7 +53,6 @@ pageContext.setAttribute("thumImg2", "/mqdefault.jpg");
 			<!-- 왼쪽 정보 -->
 			<div class="hero-info">
 				<h1 class="title">${detail.title}</h1>
-
 				<!-- 통계 -->
 				<div class="hero-stats">
 					<div class="stat-item">
@@ -114,14 +111,15 @@ pageContext.setAttribute("thumImg2", "/mqdefault.jpg");
 				<div  class="content-box">
 					<c:set var="text" value="${detail.contentInfo}" />
 					
-					<c:set var="firstLine" value="${fn:substringBefore(text, '<br/>')}" />
-					<c:set var="rest" value="${fn:substringAfter(text, '<br/>')}" />
-					d
+					<c:set var="firstLine" value="${fn:substringBefore(text, '.')}" />
+					<c:set var="rest" value="${fn:substringAfter(text, '.')}" />
+					
 					<h2 class="content-title">
 						${firstLine}
 					</h2>
-					<p class="content-text">
+					<p class="content-text" id="movie_intro">
 						${rest}
+						
 					</p>
 
 					<div class="divider"></div>
@@ -158,6 +156,8 @@ pageContext.setAttribute("thumImg2", "/mqdefault.jpg");
 					</div>
 
 					<!-- 댓글 목록 (기존 코드 유지) -->
+					
+				<%-- 	<c:forEach var="comment" items="${detail.videoLink}" varStatus="status"> --%>
 					<div class="comment-item">
 						<div class="comment-header">
 							<div class="comment-user">
@@ -236,4 +236,5 @@ pageContext.setAttribute("thumImg2", "/mqdefault.jpg");
 		<c:import url="${commonURL}/fragments/footer.jsp"/>
 	</footer>
 </body>
+
 </html>

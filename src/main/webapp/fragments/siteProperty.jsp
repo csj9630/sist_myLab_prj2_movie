@@ -17,5 +17,5 @@
 -->
     
 <% 
-application.setAttribute("commonURL","http://localhost/sist_prj2_movieWeb");
+application.setAttribute("commonURL","http://localhost/sist_myLab_prj2_movie");
 %>
