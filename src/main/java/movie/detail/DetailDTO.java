@@ -1,26 +1,53 @@
 package movie.detail;
 
-import java.util.List;
+import java.sql.Date;
 
 public class DetailDTO {
-	
-	private String title, posterImg, bgImg, contentInfo, mediaLating, genre ;
-	private int runTime;
-	private List<String> videoLink,cutImg;
+	// movie_code, movie_name, movie_genre, running_time, movie_grade, release_date,
+	// intro,
+	// poster_image,bg_image, daily_audience, total_audience, movie_delete, showing
+	private String code, name, genre, grade, intro, posterImg, bgImg, contentInfo, deleteFlag, showingFlag;
+	private int runningTime, dailyAudience, totalAudience;
+	private Date releaseDate;
 
-	@Override
-	public String toString() {
-		return "DetailDTO [title=" + title + ", posterImg=" + posterImg + ", bgImg=" + bgImg + ", contentInfo="
-				+ contentInfo + ", mediaLating=" + mediaLating + ", genre=" + genre + ", runTime=" + runTime
-				+ ", videoLink=" + videoLink + ", cutImg=" + cutImg + "]";
+	public String getCode() {
+		return code;
 	}
 
-	public String getTitle() {
-		return title;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+	public String getIntro() {
+		return intro;
+	}
+
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
 
 	public String getPosterImg() {
@@ -47,53 +74,86 @@ public class DetailDTO {
 		this.contentInfo = contentInfo;
 	}
 
-	public String getMediaLating() {
-		return mediaLating;
+	public String getDeleteFlag() {
+		return deleteFlag;
 	}
 
-	public void setMediaLating(String mediaLating) {
-		this.mediaLating = mediaLating;
+	public void setDeleteFlag(String deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
-	public String getGenre() {
-		return genre;
+	public String getShowingFlag() {
+		return showingFlag;
 	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setShowingFlag(String showingFlag) {
+		this.showingFlag = showingFlag;
 	}
 
-	public int getRunTime() {
-		return runTime;
+	public int getRunningTime() {
+		return runningTime;
 	}
 
-	public void setRunTime(int runTime) {
-		this.runTime = runTime;
+	public void setRunningTime(int runningTime) {
+		this.runningTime = runningTime;
 	}
 
-	public List<String> getVideoLink() {
-		return videoLink;
+	public int getDailyAudience() {
+		return dailyAudience;
 	}
 
-	public void setVideoLink(List<String> videoLink) {
-		this.videoLink = videoLink;
+	public void setDailyAudience(int dailyAudience) {
+		this.dailyAudience = dailyAudience;
 	}
 
-	public List<String> getCutImg() {
-		return cutImg;
+	public int getTotalAudience() {
+		return totalAudience;
 	}
 
-	public void setCutImg(List<String> cutImg) {
-		this.cutImg = cutImg;
+	public void setTotalAudience(int totalAudience) {
+		this.totalAudience = totalAudience;
 	}
 
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
 
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	@Override
+	public String toString() {
+		return "DetailDTO [code=" + code + ", name=" + name + ", genre=" + genre + ", grade=" + grade + ", intro="
+				+ intro + ", posterImg=" + posterImg + ", bgImg=" + bgImg + ", contentInfo=" + contentInfo
+				+ ", deleteFlag=" + deleteFlag + ", showingFlag=" + showingFlag + ", runningTime=" + runningTime
+				+ ", dailyAudience=" + dailyAudience + ", totalAudience=" + totalAudience + ", releaseDate="
+				+ releaseDate + "]";
+	}
 
 	public DetailDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
-}//class
+
+	public DetailDTO(String code, String name, String genre, String grade, String intro, String posterImg, String bgImg,
+			String contentInfo, String deleteFlag, String showingFlag, int runningTime, int dailyAudience,
+			int totalAudience, Date releaseDate) {
+		super();
+		this.code = code;
+		this.name = name;
+		this.genre = genre;
+		this.grade = grade;
+		this.intro = intro;
+		this.posterImg = posterImg;
+		this.bgImg = bgImg;
+		this.contentInfo = contentInfo;
+		this.deleteFlag = deleteFlag;
+		this.showingFlag = showingFlag;
+		this.runningTime = runningTime;
+		this.dailyAudience = dailyAudience;
+		this.totalAudience = totalAudience;
+		this.releaseDate = releaseDate;
+	}
+
+}// class
