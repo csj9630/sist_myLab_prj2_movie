@@ -6,7 +6,7 @@ public class DetailDTO {
 	// movie_code, movie_name, movie_genre, running_time, movie_grade, release_date,
 	// intro,
 	// poster_image,bg_image, daily_audience, total_audience, movie_delete, showing
-	private String code, name, genre, grade, intro, posterImg, bgImg, contentInfo, deleteFlag, showingFlag;
+	private String code, name, genre, grade, intro, posterImg, bgImg, deleteFlag, showingFlag;
 	private int runningTime, dailyAudience, totalAudience;
 	private Date releaseDate;
 
@@ -66,14 +66,6 @@ public class DetailDTO {
 		this.bgImg = bgImg;
 	}
 
-	public String getContentInfo() {
-		return contentInfo;
-	}
-
-	public void setContentInfo(String contentInfo) {
-		this.contentInfo = contentInfo;
-	}
-
 	public String getDeleteFlag() {
 		return deleteFlag;
 	}
@@ -125,8 +117,7 @@ public class DetailDTO {
 	@Override
 	public String toString() {
 		return "DetailDTO [code=" + code + ", name=" + name + ", genre=" + genre + ", grade=" + grade + ", intro="
-				+ intro + ", posterImg=" + posterImg + ", bgImg=" + bgImg + ", contentInfo=" + contentInfo
-				+ ", deleteFlag=" + deleteFlag + ", showingFlag=" + showingFlag + ", runningTime=" + runningTime
+				+ intro + ", posterImg=" + posterImg + ", bgImg=" + bgImg + ", contentInfo=" + ", deleteFlag=" + deleteFlag + ", showingFlag=" + showingFlag + ", runningTime=" + runningTime
 				+ ", dailyAudience=" + dailyAudience + ", totalAudience=" + totalAudience + ", releaseDate="
 				+ releaseDate + "]";
 	}
@@ -137,7 +128,7 @@ public class DetailDTO {
 	}
 
 	public DetailDTO(String code, String name, String genre, String grade, String intro, String posterImg, String bgImg,
-			String contentInfo, String deleteFlag, String showingFlag, int runningTime, int dailyAudience,
+			 String deleteFlag, String showingFlag, int runningTime, int dailyAudience,
 			int totalAudience, Date releaseDate) {
 		super();
 		this.code = code;
@@ -147,7 +138,6 @@ public class DetailDTO {
 		this.intro = intro;
 		this.posterImg = posterImg;
 		this.bgImg = bgImg;
-		this.contentInfo = contentInfo;
 		this.deleteFlag = deleteFlag;
 		this.showingFlag = showingFlag;
 		this.runningTime = runningTime;
