@@ -49,26 +49,34 @@ pageContext.setAttribute("detail", dtDTO);
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-$(function() {
-    let text = $("#").html().trim();
 
-    // 문장(. ! ?) 단위로 split
-    let sentences = text.split(/(?<=[.!?])/);
+$(document).ready(function () {
+    let text = $("#movie_intro").html().trim();
 
-    // 앞뒤 공백제거 + 빈 문장 제거
-    sentences = sentences.map(s => $.trim(s)).filter(s => s.length > 0);
+    // 1) HTML 태그 제거 (<br>, <p> 등)
+    text = text.replace(/<[^>]+>/g, " ");
 
-    // 첫 문장 → <h1>
-    let result = `<h1>${sentences[0]}</h1>`;
+    // 2) 줄바꿈을 공백으로 통합
+    text = text.replace(/\s+/g, " ").trim();
 
-    // 나머지 문장 → <p>
+    // 3) 문장 단위 분리 (. ! ?)
+    let sentences = text.split(/(?<=[.!?])\s+/);
+
+    // 4) 공백 문장 제거
+    sentences = sentences.map(s => s.trim()).filter(s => s.length > 0);
+    
+    // 5) 출력 생성
+    let result = "";
+    if (sentences.length > 0) {
+        result += '<h2 class="content-title">'+sentences[0]+'</h2>';
+    }
     for (let i = 1; i < sentences.length; i++) {
-        result += `<p>${sentences[i]}</p>`;
+        result += '<p class="content-text">'+sentences[i]+'</p>';
     }
 
-    // 결과 출력
-    $("#textArea").html(result);
-});//ready
+    $("#movie_intro").html(result);
+});
+
 </script>
 </head>
 <body>
@@ -141,33 +149,9 @@ $(function() {
 		<div class="tab-contents">
 			<!-- 작품정보 탭 -->
 			<div class="tab-content active" id="info">
-				<div class="content-box">
-					<c:set var="text" value="${detail.intro}" />
+				<div class="content-box" >
+				<div id="movie_intro"><c:out value="${detail.intro}"/></div>
 
-					<c:set var="dotPos" value="${fn:indexOf(text, '.')}" />
-					<c:set var="exPos" value="${fn:indexOf(text, '!')}" />
-					
-					<c:choose>
-					    <c:when test="${dotPos != -1 and exPos != -1}">
-					        <c:set var="endPos" value="${dotPos < exPos ? dotPos : exPos}" />
-					    </c:when>
-					    <c:when test="${dotPos != -1}">
-					        <c:set var="endPos" value="${dotPos}" />
-					    </c:when>
-					    <c:when test="${exPos != -1}">
-					        <c:set var="endPos" value="${exPos}" />
-					    </c:when>
-					    <c:otherwise>
-					        <c:set var="endPos" value="${fn:length(text)}" />
-					    </c:otherwise>
-					</c:choose>
-					
-					<c:set var="firstLine" value="${fn:substring(text, 0, endPos + 1)}" />
-					<c:set var="rest" value="${fn:substring(text, endPos + 1, fn:length(text))}" />
-
-
-					<h2 class="content-title">${firstLine}</h2>
-					<p class="content-text" id="movie_intro">${rest}</p>
 
 					<div class="divider"></div>
 
