@@ -16,8 +16,10 @@ pageContext.setAttribute("youtubeURL", "https://www.youtube.com/embed/");
 pageContext.setAttribute("thumImg1", "https://img.youtube.com/vi/");
 pageContext.setAttribute("thumImg2", "/mqdefault.jpg");
 
+String titleName = request.getParameter("name");
+
 DetailService ds = DetailService.getInstance();
-DetailDTO dtDTO = ds.searchMovieDetail("mc2");
+DetailDTO dtDTO = ds.searchMovieDetail(titleName);
 pageContext.setAttribute("detail", dtDTO);
 %>
 
@@ -47,7 +49,26 @@ pageContext.setAttribute("detail", dtDTO);
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	
+$(function() {
+    let text = $("#").html().trim();
+
+    // 문장(. ! ?) 단위로 split
+    let sentences = text.split(/(?<=[.!?])/);
+
+    // 앞뒤 공백제거 + 빈 문장 제거
+    sentences = sentences.map(s => $.trim(s)).filter(s => s.length > 0);
+
+    // 첫 문장 → <h1>
+    let result = `<h1>${sentences[0]}</h1>`;
+
+    // 나머지 문장 → <p>
+    for (let i = 1; i < sentences.length; i++) {
+        result += `<p>${sentences[i]}</p>`;
+    }
+
+    // 결과 출력
+    $("#textArea").html(result);
+});//ready
 </script>
 </head>
 <body>
@@ -123,8 +144,27 @@ pageContext.setAttribute("detail", dtDTO);
 				<div class="content-box">
 					<c:set var="text" value="${detail.intro}" />
 
-					<c:set var="firstLine" value="${fn:substringBefore(text, '.')}" />
-					<c:set var="rest" value="${fn:substringAfter(text, '.')}" />
+					<c:set var="dotPos" value="${fn:indexOf(text, '.')}" />
+					<c:set var="exPos" value="${fn:indexOf(text, '!')}" />
+					
+					<c:choose>
+					    <c:when test="${dotPos != -1 and exPos != -1}">
+					        <c:set var="endPos" value="${dotPos < exPos ? dotPos : exPos}" />
+					    </c:when>
+					    <c:when test="${dotPos != -1}">
+					        <c:set var="endPos" value="${dotPos}" />
+					    </c:when>
+					    <c:when test="${exPos != -1}">
+					        <c:set var="endPos" value="${exPos}" />
+					    </c:when>
+					    <c:otherwise>
+					        <c:set var="endPos" value="${fn:length(text)}" />
+					    </c:otherwise>
+					</c:choose>
+					
+					<c:set var="firstLine" value="${fn:substring(text, 0, endPos + 1)}" />
+					<c:set var="rest" value="${fn:substring(text, endPos + 1, fn:length(text))}" />
+
 
 					<h2 class="content-title">${firstLine}</h2>
 					<p class="content-text" id="movie_intro">${rest}</p>
