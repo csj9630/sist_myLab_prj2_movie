@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
 <h1><a href="http://localhost/sist_myLab_prj2_movie/user/movie/detail.jsp?name=mc1">MC1</a></h1>
 <h1><a href="http://localhost/sist_myLab_prj2_movie/user/movie/detail.jsp?name=mc2">MC2</a></h1>

@@ -49,8 +49,8 @@ public class DetailService1 {
         
         // setter 메서드를 사용하여 값 설정
         dtDTO.setTitle("극장판 체인소 맨: 레제편");
-        dtDTO.setPosterImg("resources/images/movie_poster.jpg");
-        dtDTO.setBgImg("resources/images/movie_bg.jpg");
+        dtDTO.setPosterImg("resources/images/movieImg/chain_poster.jpg");
+        dtDTO.setBgImg("resources/images/movieImg/chain_bg.jpg");
 //        dtDTO.setContentInfo("압도적 배틀 액션이 스크린에서 폭발한다!  데블 헌터로 일하는 소년 '덴지'는 조직의 배신으로 죽음에 내몰린 순간 전기톱 악마견 '포치타'와의 계약으로 하나로 합쳐져 누구도 막을 수 없는 존재 '체인소 맨'으로 다시 태어난다. 악마와 사냥꾼, 그리고 정체불명의 적들이 얽힌 잔혹한 전쟁 속에서 '레제'라는 이름의 미스터리한 소녀가 '덴지' 앞에 나타나는데… '덴지'는 사랑이라는 감정에 이끌려 지금껏 가장 위험한 배틀에 몸을 던진다!");
         dtDTO.setContentInfo("인기 애니메이션 '체인소 맨' 첫 극장판 국내 상륙!<br> 압도적 배틀 액션이 스크린에서 폭발한다!<br /> <br /> 데블 헌터로 일하는 소년 '덴지'는 조직의 배신으로 죽음에 내몰린 순간<br />전기톱 악마견 '포치타'와의 계약으로 하나로 합쳐져<br /> 누구도 막을 수 없는 존재 '체인소 맨'으로 다시 태어난다.<br /> <br /> 악마와 사냥꾼, 그리고 정체불명의 적들이 얽힌 잔혹한 전쟁 속에서<br /> '레제'라는 이름의 미스터리한 소녀가 '덴지' 앞에 나타나는데…<br /> '덴지'는 사랑이라는 감정에 이끌려 지금껏 가장 위험한 배틀에 몸을 던진다!<br />");
         dtDTO.setMediaLating("15세 이용가");
