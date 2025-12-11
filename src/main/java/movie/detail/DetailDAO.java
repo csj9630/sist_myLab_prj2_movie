@@ -7,31 +7,30 @@ import java.sql.SQLException;
 
 import DBConnection.DbConn;
 
-
-
 public class DetailDAO {
-	//------싱글톤 패턴------------------------
+	// ------싱글톤 패턴------------------------
 	private static DetailDAO dtDAO;
-	
+
 	private DetailDAO() {
-	}//DetailService
-	
+	}// DetailService
+
 	public static DetailDAO getInstance() {
-		if(dtDAO == null) {
+		if (dtDAO == null) {
 			dtDAO = new DetailDAO();
-		}//end if 
+		} // end if
 		return dtDAO;
-	}//getInstance
-	//--------------------------싱글톤 패턴----
+	}// getInstance
+		// --------------------------싱글톤 패턴----
 
 	/**
 	 * 영화 코드를 입력 받아서 영화 Detail DTO를 리턴한다.
+	 * 
 	 * @param code
 	 * @return
 	 * @throws SQLException
 	 */
 	public DetailDTO selectDetail(String code) throws SQLException {
-		DetailDTO  dtDTO = null;
+		DetailDTO dtDTO = null;
 
 		DbConn dbCon = DbConn.getInstance("jdbc/dbcp");
 
@@ -46,16 +45,25 @@ public class DetailDAO {
 			con = dbCon.getConn();
 
 			// 4.쿼리문 생성객체 얻기
-			String selectDetail = " select movie_code, movie_name, movie_genre, running_time, movie_grade, release_date, intro, "
-					+ " poster_image,bg_image, daily_audience, total_audience, movie_delete, showing "
-					+ " from movie where movie_code=? ";
-			pstmt = con.prepareStatement(selectDetail);
+			StringBuilder selectDetail = new StringBuilder();
+
+			selectDetail
+					.append("	select	")
+					.append("	movie_code, movie_name, movie_genre, running_time, movie_grade,		")
+					.append("	release_date, intro, main_image, bg_image, daily_audience,	")
+					.append("	total_audience, movie_delete, showing	")
+					.append("	from movie	")
+					.append("	where movie_code=?	");
+			
+			System.out.println("selectDetail : "+selectDetail);
+
+			pstmt = con.prepareStatement(selectDetail.toString());
 			// 5.바인드 변수 값 설정
 			pstmt.setString(1, code);
-			
+
 			// 6.쿼리문 수행 후 결과 얻기
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				dtDTO = new DetailDTO();
 				dtDTO.setCode(rs.getString("movie_code"));
 				dtDTO.setName(rs.getString("movie_name"));
@@ -64,13 +72,13 @@ public class DetailDAO {
 				dtDTO.setGrade(rs.getString("movie_grade"));
 				dtDTO.setReleaseDate(rs.getDate("release_date"));
 				dtDTO.setIntro(rs.getString("intro"));
-				dtDTO.setPosterImg(rs.getString("poster_image"));
+				dtDTO.setMainImg(rs.getString("main_image"));
 				dtDTO.setBgImg(rs.getString("bg_image"));
 				dtDTO.setDailyAudience(rs.getInt("daily_audience"));
 				dtDTO.setTotalAudience(rs.getInt("total_audience"));
 				dtDTO.setDeleteFlag(rs.getString("movie_delete"));
 				dtDTO.setShowingFlag(rs.getString("showing"));
-			}//end if
+			} // end if
 
 		} finally {
 			// 7.연결 끊기
@@ -80,4 +88,4 @@ public class DetailDAO {
 		return dtDTO;
 	}// selectId
 
-}//class
+}// class

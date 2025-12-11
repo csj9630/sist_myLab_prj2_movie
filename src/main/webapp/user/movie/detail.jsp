@@ -11,17 +11,8 @@
 request.setCharacterEncoding("UTF-8");
 %>
 
-<%
-pageContext.setAttribute("youtubeURL", "https://www.youtube.com/embed/");
-pageContext.setAttribute("thumImg1", "https://img.youtube.com/vi/");
-pageContext.setAttribute("thumImg2", "/mqdefault.jpg");
+<%@ include file="detail_process.jsp"%>
 
-String titleName = request.getParameter("name");
-
-DetailService ds = DetailService.getInstance();
-DetailDTO dtDTO = ds.searchMovieDetail(titleName);
-pageContext.setAttribute("detail", dtDTO);
-%>
 
 <!DOCTYPE html>
 <html lang="ko" data-bs-theme="auto">
@@ -51,31 +42,35 @@ pageContext.setAttribute("detail", dtDTO);
 <script type="text/javascript">
 
 $(document).ready(function () {
-    let text = $("#movie_intro").html().trim();
+	introDivider();
+});//document.ready
 
-    // 1) HTML 태그 제거 (<br>, <p> 등)
-    text = text.replace(/<[^>]+>/g, " ");
+$(function introDivider() {
+	 let text = $("#movie_intro").html().trim();
 
-    // 2) 줄바꿈을 공백으로 통합
-    text = text.replace(/\s+/g, " ").trim();
+	    // 1) HTML 태그 제거 (<br>, <p> 등)
+	    text = text.replace(/<[^>]+>/g, " ");
 
-    // 3) 문장 단위 분리 (. ! ?)
-    let sentences = text.split(/(?<=[.!?])\s+/);
+	    // 2) 줄바꿈을 공백으로 통합
+	    text = text.replace(/\s+/g, " ").trim();
 
-    // 4) 공백 문장 제거
-    sentences = sentences.map(s => s.trim()).filter(s => s.length > 0);
-    
-    // 5) 출력 생성
-    let result = "";
-    if (sentences.length > 0) {
-        result += '<h2 class="content-title">'+sentences[0]+'</h2>';
-    }
-    for (let i = 1; i < sentences.length; i++) {
-        result += '<p class="content-text">'+sentences[i]+'</p>';
-    }
+	    // 3) 문장 단위 분리 (. ! ?)
+	    let sentences = text.split(/(?<=[.!?])\s+/);
 
-    $("#movie_intro").html(result);
-});
+	    // 4) 공백 문장 제거
+	    sentences = sentences.map(s => s.trim()).filter(s => s.length > 0);
+	    
+	    // 5) 출력 생성
+	    let result = "";
+	    if (sentences.length > 0) {
+	        result += '<h2 class="content-title">'+sentences[0]+'</h2>';
+	    }
+	    for (let i = 1; i < sentences.length; i++) {
+	        result += '<p class="content-text">'+sentences[i]+'</p>';
+	    }
+
+	    $("#movie_intro").html(result);
+})//introDivider
 
 </script>
 </head>
@@ -87,7 +82,7 @@ $(document).ready(function () {
 	<!-- 히어로 섹션 -->
 	<div class="hero-section">
 		<div class="bg-img"
-			style="background-image: url('${commonURL}/${detail.bgImg}')"></div>
+			style="background-image: url('${commonURL}/${movieImgPath}/${detail.bgImg}')"></div>
 		<div class="bg-mask"></div>
 		<div class="hero-container">
 			<!-- 왼쪽 정보 -->
@@ -124,7 +119,7 @@ $(document).ready(function () {
 				<div class="poster">
 					<div class="poster-content">
 						<img class="poster-img" alt="${detail.name}"
-							src="${commonURL}/${detail.posterImg}" />
+							src="${commonURL}/${movieImgPath}/${detail.mainImg}" />
 					</div>
 				</div>
 				<div class="purchase-box">
