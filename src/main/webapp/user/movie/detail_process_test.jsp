@@ -10,6 +10,8 @@
     pageEncoding="UTF-8"%>
 
 <% 
+//DAO,Service 만들고 DB 데이터 잘 들어오는지 테스트하는 페이지.
+
 String movieCode = "mc001";
 
 DetailDAO dtDAO = DetailDAO.getInstance();
