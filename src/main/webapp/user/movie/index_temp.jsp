@@ -59,7 +59,8 @@
 						<a
 							href="${commonURL}/user/movie/detail_process_test.jsp">DB 테스트용</a>
 					</h2>
-					<%--<h3><a href="http://localhost/sist_myLab_prj2_movie/user/movie/detail.jsp?name=mc001">MC001</a></h3>
+					<%--
+					<h3><a href="http://localhost/sist_myLab_prj2_movie/user/movie/detail.jsp?name=mc001">MC001</a></h3>
 					 --%>
 					<%
 					String code = null;
