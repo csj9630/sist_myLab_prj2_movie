@@ -66,7 +66,7 @@
 					int limit = 4; //현 시점 영화 4개까지 준비됨
 
 					for (int i = 0; i < limit; i++) {
-						code = "MC";
+						code = "mc";
 						code += String.format("%3s", i + 1).replace(" ", "0");
 					%>
 					<h2>
