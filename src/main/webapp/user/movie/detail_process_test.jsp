@@ -1,3 +1,5 @@
+<%@page import="movie.trailer.TrailerDTO"%>
+<%@page import="movie.trailer.TrailerService"%>
 <%@page import="movie.image.ImageDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="movie.image.ImageService"%>
@@ -8,7 +10,7 @@
     pageEncoding="UTF-8"%>
 
 <% 
-String movieCode = "mc002";
+String movieCode = "mc001";
 
 DetailDAO dtDAO = DetailDAO.getInstance();
 
@@ -19,14 +21,24 @@ application.setAttribute("result",dtDTO);
 //ImageService 테스트
 ImageService is = ImageService.getInstance();
 List<ImageDTO> imagelist =is.searchImageList(movieCode);
-
 pageContext.setAttribute("img",imagelist);
+
+//TrailerService 테스트
+TrailerService ts = TrailerService.getInstance();
+List<TrailerDTO> trailerList= ts.searchTrailerList(movieCode);
+pageContext.setAttribute("trailerList",trailerList);
+
+
 
 %>
 
+<h5>영화 상세</h5>
 ${result.code}
 ${result.name}
 ${result}
-<br><br><br>
---------------------------------------------------
+<hr><hr><hr>
+<h5>이미지</h5>
 ${img}
+<hr><hr><hr>
+<h5>트레일러</h5>
+${trailerList}

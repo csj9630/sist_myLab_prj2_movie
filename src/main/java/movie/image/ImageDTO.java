@@ -2,7 +2,7 @@ package movie.image;
 
 public class ImageDTO {
 	private String img_code,img_path,movie_code;
-
+	
 	@Override
 	public String toString() {
 		return "ImageDTO [img_code=" + img_code + ", img_path=" + img_path + ", movie_code=" + movie_code + "]";

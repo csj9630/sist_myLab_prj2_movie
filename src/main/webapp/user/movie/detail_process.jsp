@@ -1,3 +1,8 @@
+<%@page import="movie.trailer.TrailerDTO"%>
+<%@page import="movie.trailer.TrailerService"%>
+<%@page import="java.util.List"%>
+<%@page import="movie.image.ImageDTO"%>
+<%@page import="movie.image.ImageService"%>
 <%@page import="movie.detail.DetailService"%>
 <%@page import="movie.detail.DetailDTO"%>
 <%@page import="movie.detail.DetailDAO"%>
@@ -7,19 +12,22 @@
 
 
 <%
-String youtubeURL = "https://www.youtube.com/embed";
-String thumImg1 = "https://img.youtube.com/vi";
-String thumImg2 = "/mqdefault.jpg";
+String movieName = request.getParameter("name");
 String movieImgPath = "resources/images/movieImg";
 
-pageContext.setAttribute("youtubeURL",youtubeURL );
-pageContext.setAttribute("thumImg1", thumImg1);
-pageContext.setAttribute("thumImg2",thumImg2 );
-pageContext.setAttribute("movieImgPath",movieImgPath );
-
-String titleName = request.getParameter("name");
-
 DetailService ds = DetailService.getInstance();
-DetailDTO dtDTO = ds.searchMovieDetail(titleName);
+DetailDTO dtDTO = ds.searchMovieDetail(movieName);
+
+ImageService is = ImageService.getInstance();
+List<ImageDTO> imgList = is.searchImageList(movieName);
+
+TrailerService ts = TrailerService.getInstance();
+List<TrailerDTO> trailerList = ts.searchTrailerList(movieName);
+
+pageContext.setAttribute("movieImgPath",movieImgPath );
 pageContext.setAttribute("detail", dtDTO);
+pageContext.setAttribute("imgList", imgList);
+pageContext.setAttribute("trailerList", trailerList);
+
+
 %>

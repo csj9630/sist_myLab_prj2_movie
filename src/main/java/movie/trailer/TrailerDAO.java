@@ -4,11 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import DBConnection.DbConn;
-import movie.detail.DetailDTO;
-import movie.image.ImageDTO;
 
 public class TrailerDAO {
 	// ------싱글톤 패턴------------------------
@@ -31,9 +30,9 @@ public class TrailerDAO {
 		 * @return
 		 * @throws SQLException
 		 */
-		public List<ImageDTO> selectImage(String code) throws SQLException {
-			List<ImageDTO> list = null;
-
+		public List<TrailerDTO> selectTrailer(String code) throws SQLException {
+			List<TrailerDTO> list = new ArrayList<TrailerDTO>();
+			
 			DbConn dbCon = DbConn.getInstance("jdbc/dbcp");
 
 			Connection con = null;
@@ -47,39 +46,30 @@ public class TrailerDAO {
 				con = dbCon.getConn();
 
 				// 4.쿼리문 생성객체 얻기
-				StringBuilder selectImage = new StringBuilder();
+				StringBuilder selectTrailer = new StringBuilder();
 
-				selectImage
+				selectTrailer
 						.append("	select	")
-						.append("	img_code, img_path, movie_code		")
-						.append("	from movie_image	")
+						.append("	trailer_code, url_path, movie_code		")
+						.append("	from TRAILER	")
 						.append("	where movie_code=?	");
 				
-				System.out.println("selectDetail : "+selectImage);
+				System.out.println("selectTrailer : "+selectTrailer);
 
-				pstmt = con.prepareStatement(selectImage.toString());
+				pstmt = con.prepareStatement(selectTrailer.toString());
 				// 5.바인드 변수 값 설정
 				pstmt.setString(1, code);
 
 				// 6.쿼리문 수행 후 결과 얻기
 				rs = pstmt.executeQuery();
 				
-				TrailerDAO
+				TrailerDTO trDTO = null;
 				while (rs.next()) {
-					dtDTO = new DetailDTO();
-					dtDTO.setCode(rs.getString("movie_code"));
-					dtDTO.setName(rs.getString("movie_name"));
-					dtDTO.setGenre(rs.getString("movie_genre"));
-					dtDTO.setRunningTime(rs.getInt("running_time"));
-					dtDTO.setGrade(rs.getString("movie_grade"));
-					dtDTO.setReleaseDate(rs.getDate("release_date"));
-					dtDTO.setIntro(rs.getString("intro"));
-					dtDTO.setMainImg(rs.getString("main_image"));
-					dtDTO.setBgImg(rs.getString("bg_image"));
-					dtDTO.setDailyAudience(rs.getInt("daily_audience"));
-					dtDTO.setTotalAudience(rs.getInt("total_audience"));
-					dtDTO.setDeleteFlag(rs.getString("movie_delete"));
-					dtDTO.setShowingFlag(rs.getString("showing"));
+					trDTO = new TrailerDTO();
+					trDTO.setTrailer_code(rs.getString("trailer_code"));
+					trDTO.setUrl_path(rs.getString("url_path"));
+					trDTO.setMovie_code(rs.getString("movie_code"));
+					list.add(trDTO);
 				} // end while
 
 			} finally {

@@ -82,7 +82,7 @@ $(function introDivider() {
 	<!-- 히어로 섹션 -->
 	<div class="hero-section">
 		<div class="bg-img"
-			style="background-image: url('${commonURL}/${movieImgPath}/${detail.bgImg}')"></div>
+			style="background-image: url('${commonURL}/${movieImgPath}/${detail.code}/${detail.bgImg}')"></div>
 		<div class="bg-mask"></div>
 		<div class="hero-container">
 			<!-- 왼쪽 정보 -->
@@ -119,7 +119,7 @@ $(function introDivider() {
 				<div class="poster">
 					<div class="poster-content">
 						<img class="poster-img" alt="${detail.name}"
-							src="${commonURL}/${movieImgPath}/${detail.mainImg}" />
+							src="${commonURL}/${movieImgPath}/${detail.code}/${detail.mainImg}" />
 					</div>
 				</div>
 				<div class="purchase-box">
@@ -212,7 +212,7 @@ $(function introDivider() {
 
 		<!-- 예고편/스틸컷 탭 -->
 
-		<%-- 
+		
 		<div class="tab-content" id="episodes">
 			<div class="content-box">
 				<div class="video-section">
@@ -223,7 +223,7 @@ $(function introDivider() {
 					<div class="comments-section">
 						<!-- 메인 비디오 플레이어 -->
 						<iframe id="mainVideo" class="main-video"
-							src="${youtubeURL}${detail.videoLink[0]}?controls=0"
+							src="${trailerList[0].fullVideoUrl}?controls=0"
 							title="${detail.name} 예고편" frameborder="0"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 							allowfullscreen> </iframe>
@@ -231,34 +231,33 @@ $(function introDivider() {
 						<!-- 비디오 썸네일 캐러셀 -->
 
 						<div class="video-carousel" id="videoCarousel">
-							<c:forEach var="videoUrl" items="${detail.videoLink}"
+							<c:forEach var="trailer" items="${trailerList}"
 								varStatus="status">
 								<div class="video-thumbnail ${status.first ? 'active' : ''}"
-									onclick="changeVideo('${youtubeURL}${videoUrl}', this)">
-									<img src="${thumImg1}${videoUrl}${thumImg2}"
+									onclick="changeVideo('${trailer.fullVideoUrl}', this)">
+									<img src="${trailer.fullThumbnailUrl}"
 										style="width: 100%; height: 100%; object-fit: cover"
 										alt="예고편 ${status.count}" />
 									<div class="play-icon">▶</div>
 								</div>
 							</c:forEach>
 						</div>
-					</div>
+					</div> 
 				</div>
 
 				<!-- 이미지 앨범 -->
 				<div class="album-section">
 					<h2 class="content-title">이미지</h2>
 					<div class="image-grid">
-						<c:forEach var="cutImgUrl" items="${detail.cutImg}"
-							varStatus="status">
+						<c:forEach var="img" items="${imgList}" varStatus="status">
 							<div class="image-item">
-								<img src="${cutImgUrl}" alt="${detail.name} ${status.count}" />
+								<img src="${commonURL}/${movieImgPath}/${img.movie_code}/${img.img_path}" alt="${detail.name} ${status.count}" />
 							</div>
 						</c:forEach>
 					</div>
 				</div>
 			</div>
-		</div> --%>
+		</div> 
 	</div>
 
 
