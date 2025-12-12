@@ -54,7 +54,6 @@ public class TrailerDAO {
 						.append("	from TRAILER	")
 						.append("	where movie_code=?	");
 				
-				System.out.println("selectTrailer : "+selectTrailer);
 
 				pstmt = con.prepareStatement(selectTrailer.toString());
 				// 5.바인드 변수 값 설정

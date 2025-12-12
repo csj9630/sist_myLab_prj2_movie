@@ -55,7 +55,6 @@ public class DetailDAO {
 					.append("	from movie	")
 					.append("	where movie_code=?	");
 			
-			System.out.println("selectDetail : "+selectDetail);
 
 			pstmt = con.prepareStatement(selectDetail.toString());
 			// 5.바인드 변수 값 설정

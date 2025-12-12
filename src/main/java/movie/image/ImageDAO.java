@@ -56,7 +56,6 @@ public class ImageDAO {
 							.append(" from movie_image ")
 							.append(" where movie_code=? ");
 					//@formatter:on
-					System.out.println("selectDetail : "+selectImage);
 
 					pstmt = con.prepareStatement(selectImage.toString());
 					// 5.바인드 변수 값 설정
